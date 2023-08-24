@@ -67,36 +67,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="col-md-12">
                     <div class="cart-detail p-3 p-md-4">
+                        <h3 class="billing-heading mb-4">Metode Pembayaran</h3>
+                                  <div class="form-group">
+                                      <div class="col-md-12">
+                                          <div class="radio">
+                                             <label><input type="radio" name="payment" class="mr-2" value="1" checked> Transfer bank</label>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- <div class="form-group">
+                                      <div class="col-md-12">
+                                          <div class="radio">
+                                             <label><input type="radio" name="payment" class="mr-2" value="2" > Bayar ditempat</label>
+                                          </div>
+                                      </div>
+                                  </div> -->
+                              </div>
+
+
+
+
+                    <div class="cart-detail p-3 p-md-4">
                         <h3 class="billing-heading mb-4">Metode Pengiriman</h3>
                                   <div class="form-group">
                                       <div class="col-md-12">
                                           <div class="radio">
-                                             <label><input type="radio" name="payment" class="mr-2" value="1" checked> JnT</label>
+                                             <label><input type="radio" name="ship" class="mr-2" value="1" checked> JnT</label>
                                           </div>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="col-md-12">
                                           <div class="radio">
-                                             <label><input type="radio" name="payment" class="mr-2" value="2" > JnE</label>
+                                             <label><input type="radio" name="ship" class="mr-2" value="2" > JnE</label>
                                           </div>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="col-md-12">
                                           <div class="radio">
-                                             <label><input type="radio" name="payment" class="mr-2" value="3" > Gojek</label>
+                                             <label><input type="radio" name="ship" class="mr-2" value="3" > Gojek</label>
                                           </div>
                                       </div>
                                   </div>
-                                  <div class="form-group">
-                                      <div class="col-md-12">
-                                          <div class="radio">
-                                             <label><input type="radio" name="payment" class="mr-2" value="4" > Si Cepat</label>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  
                               </div>
 
 

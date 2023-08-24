@@ -160,6 +160,7 @@ class Shop extends CI_Controller {
                 $total_items = count($quantity);
                 $payment = $this->input->post('payment');
 
+                $ship = $this->input->post('ship');
                 $name = $this->input->post('name');
                 $phone_number = $this->input->post('phone_number');
                 $address = $this->input->post('address');
@@ -187,6 +188,7 @@ class Shop extends CI_Controller {
                     'total_price' => $total_price,
                     'total_items' => $total_items,
                     'payment_method' => $payment,
+                    'ship_method' => $ship,
                     'delivery_data' => $delivery_data
                 );
 

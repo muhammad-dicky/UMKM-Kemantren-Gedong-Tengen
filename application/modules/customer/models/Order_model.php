@@ -32,7 +32,7 @@ class Order_model extends CI_Model {
         $id = $this->user_id;
 
         $orders = $this->db->query("
-            SELECT o.id, o.order_number, o.order_date, o.order_status, o.payment_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer
+            SELECT o.id, o.order_number, o.order_date, o.order_status, o.payment_method,o.ship_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer
             FROM orders o
             LEFT JOIN coupons c
                 ON c.id = o.coupon_id

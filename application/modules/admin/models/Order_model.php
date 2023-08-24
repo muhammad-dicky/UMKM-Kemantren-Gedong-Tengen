@@ -35,7 +35,7 @@ class Order_model extends CI_Model
         //     LIMIT $start, $limit
         // ");
 
-        $this->db->select('o.id, o.order_number, o.order_date, o.order_status, o.payment_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer')
+        $this->db->select('o.id, o.order_number, o.order_date, o.order_status, o.payment_method,o.ship_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer')
             ->join('coupons c', 'c.id = o.coupon_id', 'left')
             ->join('customers cu', 'cu.user_id = o.user_id', 'left')
             ->order_by('o.order_date', 'DESC')
@@ -55,7 +55,7 @@ class Order_model extends CI_Model
     public function latest_orders()
     {
         $orders = $this->db->query("
-            SELECT o.id, o.order_number, o.order_date, o.order_status, o.payment_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer
+            SELECT o.id, o.order_number, o.order_date, o.order_status, o.payment_method,o.ship_method, o.total_price, o.total_items, c.name AS coupon, cu.name AS customer
             FROM orders o
             LEFT JOIN coupons c
                 ON c.id = o.coupon_id

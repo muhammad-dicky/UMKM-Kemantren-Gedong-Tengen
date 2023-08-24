@@ -31,6 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th scope="col">Jumlah Pesanan</th>
                             <th scope="col">Total Pesanan</th>
                             <th scope="col">Pembayaran</th>
+                            <th scope="col">Pengiriman</th>
                             <th scope="col">Status</th>
                         </tr>
                         <?php foreach ($orders as $order) : ?>
@@ -40,11 +41,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><?php echo get_formatted_date($order->order_date); ?></td>
                             <td><?php echo $order->total_items; ?> barang</td>
                             <td>Rp <?php echo format_rupiah($order->total_price); ?></td>
-
-
                             <td><?php echo ($order->payment_method == 1) ? 'Transfer bank' : 'Bayar ditempat'; ?></td>
-
-          
+                            
+                            <td><?php echo ($order->ship_method == 1) ? 'JnT' : ($order->ship_method == 2 ? 'JnE' : 'Gojek'); ?></td>
 
 
                             <td><?php echo get_order_status($order->order_status, $order->payment_method); ?></td>

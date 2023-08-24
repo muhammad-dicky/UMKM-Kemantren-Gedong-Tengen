@@ -98,6 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         Rp <?php echo format_rupiah($order->total_price); ?>
                                     </td>
                                     <td><?php echo get_order_status($order->order_status, '#'. $order->payment_method); ?></td>
+                                    <td><?php echo get_order_status($order->order_status, '#'. $order->ship_method); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

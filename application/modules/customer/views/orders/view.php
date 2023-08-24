@@ -48,6 +48,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <td>Metode pembayaran</td>
                                 <td><b><?php echo ($data->payment_method == 1) ? 'Transfer bank' : 'Bayar ditempat'; ?></b></td>
                             </tr>
+                           
+                            
+                            <tr>
+  <td>Metode Pengiriman</td>
+  <td><b><?php echo ($data->ship_method == 1) ? 'JnT' : ($data->ship_method == 2 ? 'JnE' : 'Gojek'); ?></b></td>
+</tr>
+
+
                             <tr>
                                 <td>Status</td>
                                 <td><b class="statusField"><?php echo get_order_status($data->order_status, $data->payment_method); ?></b></td>
