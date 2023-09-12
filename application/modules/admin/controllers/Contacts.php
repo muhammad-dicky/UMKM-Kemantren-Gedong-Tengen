@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Contacts extends CI_Controller {
     public function __construct()
@@ -10,6 +12,11 @@ class Contacts extends CI_Controller {
 
         $this->load->model('contact_model', 'contact');
         $this->load->library('form_validation');
+
+        // ini library buat ngirim email
+        require APPPATH.'libraries/phpmailer/src/Exception.php';
+        require APPPATH.'libraries/phpmailer/src/PHPMailer.php';
+        require APPPATH.'libraries/phpmailer/src/SMTP.php';
     }
 
     public function index()
@@ -65,6 +72,90 @@ class Contacts extends CI_Controller {
         $this->email->print_debugger(array('headers'));
     }
 
+
+
+    // nyoba fungsi kirim email
+    public function send()
+ {
+   // PHPMailer object
+   $response = false;
+   $mail = new PHPMailer();
+
+   // SMTP configuration
+   $mail->isSMTP();
+   $mail->Host     = 'smtp.gmail.com';
+   $mail->SMTPAuth = true;
+   $mail->Username = 'dickyzs155@gmail.com'; // user email anda
+   $mail->Password = 'gkgcvvvgzvcxgvkz'; // diisi dengan App Password yang sudah di generate
+   $mail->SMTPSecure = 'ssl';
+   $mail->Port     = 465;
+
+   $mail->setFrom('dickyzs155@gmail.com', 'dicky'); // user email anda
+   $mail->addReplyTo('dickyzs155@gmail.com', ''); //user email anda
+   
+
+   // Email subject
+   $mail->Subject = 'SMTP CodeIgniter | dicky'; //subject email
+
+   // Add a recipient
+   $mail->addAddress($this->input->post('to')); //email tujuan pengiriman email
+
+   // Set email format to HTML
+   $mail->isHTML(true);
+
+
+//    ini isian emailnya
+// $mailContent = array (
+// $id = $this->input->post('id'),
+//         $sender = $this->input->post('email'),
+//         $name = $this->input->post('name'),
+//         $send_to = $this->input->post('to'),
+//         $subject = $this->input->post('subject'),
+//         $message = $this->input->post('message'),
+// );
+        
+
+
+   // Email body content
+   $mailContent = "<p>Hallo <b>".$this->input->post('nama')."</b> Halo terimakasih sudah menghubungi kami:</p>
+   <table>
+     <tr>
+       <td>Nama</td>
+       <td>:</td>
+       <td>".$this->input->post('name')."</td>
+     </tr>
+     <tr>
+       <td>Subject</td>
+       <td>:</td>
+       <td>".$this->input->post('subject')."</td>
+     </tr>
+     <tr>
+       <td>Pesan</td>
+       <td>:</td>
+       <td>".$this->input->post('message')."</td>
+     </tr>
+   </table>
+   <p>Terimakasih <b>".$this->input->post('nama')."</b> telah memberi komentar.</p>"; 
+   // isi email
+
+   $mail->Body = $mailContent;
+
+   // Send email
+   if(!$mail->send()){
+     echo 'Message could not be sent.';
+     echo 'Mailer Error: ' . $mail->ErrorInfo;
+   }else{
+     echo 'Message has been sent';
+   }
+ }
+
+
+
+// batas bawah ngirim email
+
+
+
+
     public function api($action = '')
     {
         switch ($action)
@@ -77,7 +168,7 @@ class Contacts extends CI_Controller {
             case 'delete' :
                 $id = $this->input->post('id');
 
-                $this->customer->delete_customer($id);
+                $this->contact->delete_contact($id);
 
                 $response = array('code' => 204);
             break;

@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="card-header">
                     <h3 class="mb-0">Balas Pesan</h3>
                 </div>
-                <form action="<?php echo site_url('admin/contacts/reply'); ?>" method="POST">
+                <form action="<?php echo site_url('admin/contacts/send'); ?>" method="POST">
                 <input type="hidden" name="id" value="<?php echo $contact->id; ?>">
 
                 <div class="card-body">
