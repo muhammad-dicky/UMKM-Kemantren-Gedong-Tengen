@@ -24,10 +24,15 @@ class Settings extends CI_Controller {
         $this->load->view('footer');
     }
 
+
+
+
+
+
     public function update()
     {
         $fields = array(
-            'store_name', 'store_phone_number', 'store_email', 'store_tagline', 'store_description',
+            'store_name', 'store_phone_number', 'store_email', 'store_tagline', 'store_logo', 'store_description',
             'store_address', 'min_shop_to_free_shipping_cost', 'shipping_cost'
         );
 
@@ -40,6 +45,28 @@ class Settings extends CI_Controller {
 
         $banks = $this->input->post('banks');
         update_settings('payment_banks', '{}');
+
+
+        // Konfigurasi upload gambar
+        $config['upload_path'] = './assets/uploads/sites/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 2048;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('picture')) {
+            $upload_data = $this->upload->data();
+            $new_file_name = $upload_data['file_name'];
+
+            // Memanggil model untuk memperbarui tabel "settings"
+            $this->load->model('Setting_model');
+            $this->Setting_model->update_setting('store_logo', $new_file_name);
+
+            redirect('admin/settings'); // Redirect ke halaman pengaturan setelah berhasil
+        } else {
+            $error = $this->upload->display_errors();
+            echo $error;
+        }
 
         if (is_array($banks) && count($banks) > 0 && ! empty($banks[0]['bank']))
         {

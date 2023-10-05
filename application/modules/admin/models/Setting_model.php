@@ -19,6 +19,17 @@ class Setting_model extends CI_Model {
         return $user->row();
     }
 
+
+
+    public function update_setting($key, $content) {
+        $data = array(
+            'content' => $content
+        );
+
+        $this->db->where('key', $key);
+        $this->db->update('settings', $data);
+    }
+
     public function update_profile($data)
     {
         $id = $this->user_id;
