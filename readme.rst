@@ -1,4 +1,9 @@
 ###################
+Catatan login 
+user = admin
+pw = 12345
+
+###################
 What is CodeIgniter
 ###################
 
