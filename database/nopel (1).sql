@@ -32,7 +32,7 @@ CREATE TABLE `ci_sessions` (
   `ip_address` varchar(45) NOT NULL,
   `timestamp` int UNSIGNED NOT NULL DEFAULT '0',
   `data` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `ci_sessions`
@@ -201,7 +201,7 @@ CREATE TABLE `contacts` (
   `contact_date` datetime DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
   `reply_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -224,7 +224,7 @@ CREATE TABLE `coupons` (
   `start_date` date NOT NULL,
   `expired_date` date NOT NULL,
   `is_active` tinyint DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -239,7 +239,7 @@ CREATE TABLE `customers` (
   `phone_number` varchar(32) DEFAULT NULL,
   `address` varchar(191) NOT NULL,
   `profile_picture` varchar(191) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `customers`
@@ -269,7 +269,7 @@ CREATE TABLE `orders` (
   `delivery_data` text,
   `delivered_date` datetime DEFAULT NULL,
   `finish_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `orders`
@@ -311,7 +311,7 @@ CREATE TABLE `order_items` (
   `product_id` bigint DEFAULT NULL,
   `order_qty` int NOT NULL,
   `order_price` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `order_items`
@@ -357,7 +357,7 @@ CREATE TABLE `payments` (
   `payment_status` enum('1','2','3') DEFAULT '1',
   `confirmed_date` datetime DEFAULT NULL,
   `payment_data` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `payments`
@@ -383,7 +383,7 @@ CREATE TABLE `products` (
   `category_id` int DEFAULT NULL,
   `sku` varchar(32) DEFAULT NULL,
   `name` varchar(191) NOT NULL,
-  `description` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `description` varchar(5000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `picture_name` varchar(191) DEFAULT NULL,
   `price` varchar(150) NOT NULL,
   `current_discount` decimal(8,2) DEFAULT '0.00',
@@ -391,7 +391,7 @@ CREATE TABLE `products` (
   `product_unit` varchar(32) DEFAULT NULL,
   `is_available` tinyint(1) DEFAULT '1',
   `add_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -413,7 +413,7 @@ INSERT INTO `products` (`id`, `category_id`, `sku`, `name`, `description`, `pict
 CREATE TABLE `product_category` (
   `id` int NOT NULL,
   `name` varchar(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `product_category`
@@ -438,7 +438,7 @@ CREATE TABLE `reviews` (
   `review_text` mediumtext NOT NULL,
   `review_date` datetime NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `reviews`
@@ -459,7 +459,7 @@ CREATE TABLE `settings` (
   `id` int NOT NULL,
   `key` varchar(32) NOT NULL,
   `content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `settings`

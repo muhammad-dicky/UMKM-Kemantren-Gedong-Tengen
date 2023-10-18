@@ -87,10 +87,35 @@ if (!function_exists('get_user_name')) {
     }
 }
 
+// if (!function_exists('get_user_image')) {
+//     function get_user_image()
+//     {
+//         $CI = init();
+//         $id = get_current_user_id();
+
+//         $user = $CI->db->query("
+//             SELECT u.*, c.*
+//             FROM users u
+//             JOIN customers c
+//                 ON c.user_id = u.id
+//             WHERE u.id = '$id'
+//         ")->row();
+
+//         $picture = $user->profile_picture;
+//         $file = './assets/uploads/users/' . $picture;
+
+//         if (!file_exists($file))
+//             $picture_name = $picture;
+//         else
+//             $picture_name = 'profile1.png';
+
+//         return base_url('assets/uploads/users/' . $picture_name);
+//     }
+// }
 if (!function_exists('get_user_image')) {
     function get_user_image()
     {
-        $CI = init();
+        $CI = &get_instance(); // Ganti init() dengan get_instance()
         $id = get_current_user_id();
 
         $user = $CI->db->query("
@@ -101,17 +126,25 @@ if (!function_exists('get_user_image')) {
             WHERE u.id = '$id'
         ")->row();
 
-        $picture = $user->profile_picture;
-        $file = './assets/uploads/users/' . $picture;
+        if ($user) {
+            $picture = $user->profile_picture;
+            $file = './assets/uploads/users/' . $picture;
 
-        if (!file_exists($file))
-            $picture_name = $picture;
-        else
-            $picture_name = 'admin.png';
+            if (file_exists($file)) {
+                $picture_name = $picture;
+            } else {
+                $picture_name = 'profile1.png';
+            }
 
-        return base_url('assets/uploads/users/' . $picture_name);
+            return base_url('assets/uploads/users/' . $picture_name);
+        }
+
+        return base_url('assets/uploads/users/profile1.png'); // Tambahkan penanganan jika tidak ada hasil dari query
     }
 }
+
+
+
 
 if (!function_exists('get_store_logo')) {
     function get_store_logo()
